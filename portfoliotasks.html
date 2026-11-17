@@ -15,152 +15,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.4.3"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.3.0"></script>
 
-    <style>
-        /* ---------- Colours (light and dark mode) ---------- */
-        :root {
-            --bg: #fbfbf9;
-            --surface: #ffffff;
-            --ink: #1b2430;
-            --muted: #5b6573;
-            --line: #e2e4e8;
-            --accent: #1f5f7a;
-            --accent-soft: #e6f0f4;
-            --heading: "Spectral", Georgia, "Times New Roman", serif;
-            --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #151a21;
-                --surface: #1c232c;
-                --ink: #e8ebef;
-                --muted: #9aa4b1;
-                --line: #2c3541;
-                --accent: #7fbdd6;
-                --accent-soft: #22323d;
-            }
-        }
-
-        /* ---------- Base ---------- */
-        * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-padding-top: 24px; }
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--ink);
-            font-family: var(--body);
-            font-size: 17px;
-            line-height: 1.65;
-        }
-        a { color: var(--accent); }
-        a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
-
-        /* ---------- Page layout: sidebar + content ---------- */
-        .layout {
-            display: grid;
-            grid-template-columns: 240px minmax(0, 1fr);
-            gap: 56px;
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 56px 32px 96px;
-        }
-
-        /* ---------- Sidebar ---------- */
-        .sidebar { position: sticky; top: 40px; align-self: start; }
-        .name {
-            font-family: var(--heading);
-            font-weight: 600;
-            font-size: 2rem;
-            line-height: 1.1;
-            margin: 0 0 8px;
-        }
-        .contact { margin: 0 0 32px; font-size: 0.95rem; color: var(--muted); }
-        .contact a { text-decoration: none; margin-right: 14px; }
-        .contact a:hover { text-decoration: underline; }
-
-        .week-nav { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line); }
-        .week-nav a {
-            display: flex;
-            gap: 12px;
-            padding: 6px 0 6px 16px;
-            margin-left: -1px;
-            border-left: 2px solid transparent;
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-        }
-        .week-nav a span { min-width: 1.6em; font-variant-numeric: tabular-nums; }
-        .week-nav a:hover { color: var(--ink); }
-        .week-nav a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 500; }
-
-        /* ---------- Content ---------- */
-        .intro {
-            font-size: 1.15rem;
-            color: var(--muted);
-            max-width: 62ch;
-            margin: 0 0 56px;
-        }
-        .week {
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: 10px;
-            padding: 32px 36px;
-            margin-bottom: 28px;
-        }
-        .week-number {
-            margin: 0 0 4px;
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        .week h2 {
-            font-family: var(--heading);
-            font-weight: 500;
-            font-size: 1.6rem;
-            line-height: 1.25;
-            margin: 0 0 12px;
-        }
-        .week p { max-width: 68ch; margin: 0 0 16px; }
-
-        figure { margin: 24px 0 0; overflow-x: auto; }
-        .chart-placeholder {
-            border: 1px dashed var(--line);
-            background: var(--accent-soft);
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
-        footer { color: var(--muted); font-size: 0.85rem; margin-top: 48px; }
-
-        /* ---------- Mobile: sidebar becomes a top bar ---------- */
-        @media (max-width: 820px) {
-            .layout { grid-template-columns: 1fr; gap: 24px; padding: 32px 20px 64px; }
-            .sidebar { position: static; }
-            .week-nav {
-                display: flex;
-                overflow-x: auto;
-                border-left: none;
-                border-bottom: 1px solid var(--line);
-                gap: 4px;
-            }
-            .week-nav a {
-                padding: 8px 12px;
-                margin: 0 0 -1px;
-                border-left: none;
-                border-bottom: 2px solid transparent;
-                white-space: nowrap;
-            }
-            .week-nav a.active { border-bottom-color: var(--accent); }
-            .week-nav a .label { display: none; }
-            .week { padding: 24px 20px; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-        }
-    </style>
+    <!-- All formatting lives in style.css (same folder) -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -168,21 +24,21 @@
 
     <!-- Sidebar: your name, links and the list of weeks -->
     <aside class="sidebar">
-        <h1 class="name" style="margin-bottom: 32px;">Ritika Kini</h1>
+        <h1 class="name">Ritika Kini</h1>
 
         <nav aria-label="Weekly tasks">
             <ul class="week-nav">
-                <li><a href="#week1"><span>1</span><b class="label" style="font-weight:inherit">Week 1</b></a></li>
-                <li><a href="#week2"><span>2</span><b class="label" style="font-weight:inherit">Week 2</b></a></li>
-                <li><a href="#week3"><span>3</span><b class="label" style="font-weight:inherit">Week 3</b></a></li>
-                <li><a href="#week4"><span>4</span><b class="label" style="font-weight:inherit">Week 4</b></a></li>
-                <li><a href="#week5"><span>5</span><b class="label" style="font-weight:inherit">Week 5</b></a></li>
-                <li><a href="#week6"><span>6</span><b class="label" style="font-weight:inherit">Week 6</b></a></li>
-                <li><a href="#week7"><span>7</span><b class="label" style="font-weight:inherit">Week 7</b></a></li>
-                <li><a href="#week8"><span>8</span><b class="label" style="font-weight:inherit">Week 8</b></a></li>
-                <li><a href="#week9"><span>9</span><b class="label" style="font-weight:inherit">Week 9</b></a></li>
-                <li><a href="#week10"><span>10</span><b class="label" style="font-weight:inherit">Week 10</b></a></li>
-                <li><a href="#week11"><span>11</span><b class="label" style="font-weight:inherit">Week 11</b></a></li>
+                <li><a href="#week1"><span>1</span><b class="label">Week 1</b></a></li>
+                <li><a href="#week2"><span>2</span><b class="label">Week 2</b></a></li>
+                <li><a href="#week3"><span>3</span><b class="label">Week 3</b></a></li>
+                <li><a href="#week4"><span>4</span><b class="label">Week 4</b></a></li>
+                <li><a href="#week5"><span>5</span><b class="label">Week 5</b></a></li>
+                <li><a href="#week6"><span>6</span><b class="label">Week 6</b></a></li>
+                <li><a href="#week7"><span>7</span><b class="label">Week 7</b></a></li>
+                <li><a href="#week8"><span>8</span><b class="label">Week 8</b></a></li>
+                <li><a href="#week9"><span>9</span><b class="label">Week 9</b></a></li>
+                <li><a href="#week10"><span>10</span><b class="label">Week 10</b></a></li>
+                <li><a href="#week11"><span>11</span><b class="label">Week 11</b></a></li>
             </ul>
         </nav>
     </aside>
