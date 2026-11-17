@@ -49,13 +49,13 @@
             A portfolio of my weekly data visualisation tasks. Each week below includes the brief, my chart and a short write-up of what it shows.
         </p>
 
-        <!-- To fill in a week: change the title and text, then add the chart's URL
-             (or file name, e.g. "week2_chart.json") to weekCharts in the script at the bottom. -->
+        <!-- To fill in a week: change the title and text, then add a vegaEmbed line
+             for its chart in the script at the bottom of this file. -->
 
         <section class="week" id="week1">
             <p class="week-number">Week 1</p>
-            <h2>A basic chart</h2>
-            <p>Describe the task and what the chart shows. As a first example, this uses a basic chart from the course repo.</p>
+            <h2>GDP per capita by country</h2>
+            <p>Describe the task and what the chart shows.</p>
             <figure id="chart1"></figure>
         </section>
 
@@ -134,27 +134,24 @@
 </div>
 
 <script>
-    // Add each week's chart here: week number → chart URL or file name.
-    // Weeks left out show a "Chart coming soon" box.
-    const weekCharts = {
-        1: "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/2/s2_chart2.json",
-        // 2: "week2_chart.json",
-        // 3: "week3_chart.json",
-    };
+    // ---------- Charts ----------
+    // Each chart is added with vegaEmbed('#chartN', spec).
+    // Chart files are kept in the visualizations/ folder.
 
-    for (let week = 1; week <= 11; week++) {
-        const target = "#chart" + week;
-        if (weekCharts[week]) {
-            vegaEmbed(target, weekCharts[week]).catch(err => {
-                document.querySelector(target).innerHTML =
-                    '<div class="chart-placeholder">This chart couldn’t load. Check the file name in weekCharts.</div>';
-                console.error(err);
-            });
-        } else {
-            document.querySelector(target).innerHTML =
-                '<div class="chart-placeholder">Chart coming soon</div>';
-        }
-    }
+    // Week 1
+    let week1_spec = "visualizations/week1_chart.json";
+    vegaEmbed('#chart1', week1_spec);
+
+    // Week 2: remove the // from the next two lines once you have a chart
+    // let week2_spec = "visualizations/week2_chart.json";
+    // vegaEmbed('#chart2', week2_spec);
+
+    // Week 3
+    // let week3_spec = "visualizations/week3_chart.json";
+    // vegaEmbed('#chart3', week3_spec);
+
+    // Weeks 4 to 11 work the same way, using #chart4 ... #chart11
+    // Any week without a chart shows a "Chart coming soon" box.
 
     // Highlight the week you're currently reading in the sidebar
     const links = document.querySelectorAll(".week-nav a");
