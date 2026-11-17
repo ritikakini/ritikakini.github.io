@@ -54,7 +54,7 @@
 
         <section class="week" id="week1">
             <p class="week-number">Week 1</p>
-            <h2>Two charts displayed for Week 1</h2>
+            <h2>Sourced Two Charts</h2>
             <p>Display two charts sourced from a github page using VegaEmbed.</p>
             <figure id="chart1"></figure>
             <figure id="chart1b"></figure>
@@ -62,9 +62,10 @@
 
         <section class="week" id="week2">
             <p class="week-number">Week 2</p>
-            <h2>Task title</h2>
-            <p>Describe this week’s task and what the chart shows.</p>
+            <h2>Created Two Charts</h2>
+            <p>Created two charts using Economics Observatory Data Hub.</p>
             <figure id="chart2"></figure>
+            <figure id="chart2b"></figure>
         </section>
 
         <section class="week" id="week3">
@@ -146,9 +147,12 @@
     let week1_spec2 = "visualizations/wk1_chart2.json";
     vegaEmbed('#chart1b', week1_spec2);
 
-    // Week 2: remove the // from the next two lines once you have a chart
-    // let week2_spec = "visualizations/week2_chart.json";
-    // vegaEmbed('#chart2', week2_spec);
+    // Week 2
+    let week2_spec1 = "visualizations/week2a.json";
+    vegaEmbed('#chart2', week2_spec1);
+
+    let week2_spec2 = "visualizations/week2b.json";
+    vegaEmbed('#chart2b', week2_spec2);
 
     // Week 3
     // let week3_spec = "visualizations/week3_chart.json";
