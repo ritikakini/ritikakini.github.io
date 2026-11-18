@@ -1,0 +1,129 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": null,
+  "width": 560,
+  "height": 130,
+  "title": {
+    "text": "Most states already set a higher minimum wage",
+    "subtitle": "Number of states (including DC) by minimum wage level, 2026"
+  },
+  "data": {
+    "values": [
+      {
+        "group": "Above $7.25",
+        "count": 31,
+        "note": "30 states + DC"
+      },
+      {
+        "group": "At $7.25",
+        "count": 20,
+        "note": "20 states"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": null,
+          "axis": {
+            "title": null,
+            "domain": false,
+            "ticks": false,
+            "labelFontSize": 13,
+            "labelColor": "#1b2430",
+            "labelPadding": 8
+          }
+        },
+        "x": {
+          "field": "count",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              35
+            ]
+          },
+          "axis": null
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Above $7.25",
+              "At $7.25"
+            ],
+            "range": [
+              "#1f5f7a",
+              "#b5652e"
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "group",
+            "title": "Minimum wage"
+          },
+          {
+            "field": "note",
+            "title": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "color": "#1b2430",
+        "fontSize": 13
+      },
+      "encoding": {
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": null
+        },
+        "x": {
+          "field": "count",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif",
+    "axis": {
+      "labelColor": "#5b6573",
+      "titleColor": "#5b6573",
+      "domainColor": "#c9bfa9",
+      "tickColor": "#c9bfa9",
+      "gridColor": "#e6dcc8",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal"
+    },
+    "title": {
+      "color": "#1b2430",
+      "subtitleColor": "#5b6573",
+      "anchor": "start",
+      "fontSize": 16,
+      "subtitleFontSize": 12
+    }
+  }
+}

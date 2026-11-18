@@ -1,0 +1,201 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": null,
+  "width": 560,
+  "height": 280,
+  "title": {
+    "text": "The federal minimum wage has been $7.25 since 2009",
+    "subtitle": "US federal minimum hourly wage, 1938\u20132026"
+  },
+  "data": {
+    "values": [
+      {
+        "year": 1938,
+        "wage": 0.25
+      },
+      {
+        "year": 1939,
+        "wage": 0.3
+      },
+      {
+        "year": 1945,
+        "wage": 0.4
+      },
+      {
+        "year": 1950,
+        "wage": 0.75
+      },
+      {
+        "year": 1956,
+        "wage": 1.0
+      },
+      {
+        "year": 1961,
+        "wage": 1.15
+      },
+      {
+        "year": 1963,
+        "wage": 1.25
+      },
+      {
+        "year": 1967,
+        "wage": 1.4
+      },
+      {
+        "year": 1968,
+        "wage": 1.6
+      },
+      {
+        "year": 1974,
+        "wage": 2.0
+      },
+      {
+        "year": 1975,
+        "wage": 2.1
+      },
+      {
+        "year": 1976,
+        "wage": 2.3
+      },
+      {
+        "year": 1978,
+        "wage": 2.65
+      },
+      {
+        "year": 1979,
+        "wage": 2.9
+      },
+      {
+        "year": 1980,
+        "wage": 3.1
+      },
+      {
+        "year": 1981,
+        "wage": 3.35
+      },
+      {
+        "year": 1990,
+        "wage": 3.8
+      },
+      {
+        "year": 1991,
+        "wage": 4.25
+      },
+      {
+        "year": 1996,
+        "wage": 4.75
+      },
+      {
+        "year": 1997,
+        "wage": 5.15
+      },
+      {
+        "year": 2007,
+        "wage": 5.85
+      },
+      {
+        "year": 2008,
+        "wage": 6.55
+      },
+      {
+        "year": 2009,
+        "wage": 7.25
+      },
+      {
+        "year": 2026,
+        "wage": 7.25
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif",
+    "axis": {
+      "labelColor": "#5b6573",
+      "titleColor": "#5b6573",
+      "domainColor": "#c9bfa9",
+      "tickColor": "#c9bfa9",
+      "gridColor": "#e6dcc8",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal"
+    },
+    "title": {
+      "color": "#1b2430",
+      "subtitleColor": "#5b6573",
+      "anchor": "start",
+      "fontSize": 16,
+      "subtitleFontSize": 12
+    }
+  },
+  "mark": {
+    "type": "line",
+    "color": "#1f5f7a",
+    "strokeWidth": 2.5
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          1938,
+          2026
+        ]
+      },
+      "axis": {
+        "title": null,
+        "format": "d",
+        "values": [
+          1940,
+          1950,
+          1960,
+          1970,
+          1980,
+          1990,
+          2000,
+          2010,
+          2020
+        ],
+        "grid": false
+      }
+    },
+    "y": {
+      "field": "wage",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0,
+          8
+        ]
+      },
+      "axis": {
+        "title": "Dollars per hour",
+        "format": "$.2f",
+        "values": [
+          0,
+          2,
+          4,
+          6,
+          8
+        ],
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "tooltip": [
+      {
+        "field": "year",
+        "title": "Year",
+        "format": "d"
+      },
+      {
+        "field": "wage",
+        "title": "Minimum wage",
+        "format": "$.2f"
+      }
+    ]
+  }
+}
