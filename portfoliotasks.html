@@ -77,11 +77,16 @@
 
         <section class="week" id="week4">
             <p class="week-number">Week 4</p>
-            <h2>Task title</h2>
-            <p>Replicating and then Re-Creating a "Bad" Chart.</p>
-            <figure id="chart4_original"></figure>
+            <h2>Replicating and Re-Creating a “Bad” Chart</h2>
+            <p>Original chart: Georgia Department of Public Health, May 2020. The dates on the x-axis are not in chronological order.</p>
+            <img src="visualizations/week4_original.png" alt="Original Georgia Department of Public Health bar chart of COVID-19 cases" style="max-width: 100%; border-radius: 8px;">
+        
+            <h3>My replica</h3>
             <figure id="chart4_replica"></figure>
+        
+            <h3>My improved version</h3>
             <figure id="chart4_improve"></figure>
+            <p>Sorted dates chronologically, switched to a line per county, and shaded incomplete recent days, so the true trend is clear.</p>
         </section>
 
         <section class="week" id="week5">
@@ -161,8 +166,6 @@
    // vegaEmbed('#chart3', week3_spec);
 
     // Week 4
-     <img src="visualizations/week4_original.png" alt="Original Georgia Department of Public Health bar chart of COVID-19 cases" style="max-width: 100%; border-radius: 8px;">
-    
     let week4_spec1 = "visualizations/week4_replica.json";
     vegaEmbed('#chart4_replica', week4_spec1);
 
