@@ -70,9 +70,11 @@
 
         <section class="week" id="week3">
             <p class="week-number">Week 3</p>
-            <h2>Task title</h2>
-            <p>Describe this week’s task and what the chart shows.</p>
-            <figure id="chart3"></figure>
+            <h2>Policy Debate: Federal Minimum Wage in the United States</h2>
+            <p>The US has not raised the federal minimum wage in years, this is at the center of many political debates especially with rising costs.</p>
+            <figure id="chart3"></figure> 
+            <figure id="chart3b"></figure>
+            <p>Some states have set their own minimum wages notabily higher than the federal level. The federal guideline should change to follow suit.</p>
         </section>
 
         <section class="week" id="week4">
@@ -162,8 +164,11 @@
     vegaEmbed('#chart2b', week2_spec2);
     
     // Week 3
-   // let week3_spec = "visualizations/week3_chart.json";
-   // vegaEmbed('#chart3', week3_spec);
+    let week3_spec1 = "visualizations/week3_fed.json";
+    vegaEmbed('#chart3', week3_spec1);
+
+    let week3_spec2 = "visualizations/week3_state.json";
+    vegaEmbed('#chart3b', week3_spec2);
 
     // Week 4
     let week4_spec1 = "visualizations/week4_replica.json";
