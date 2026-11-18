@@ -11,7 +11,7 @@
   },
   "title": {
     "text": "No clear fall in new COVID-19 cases in Georgia's five hardest-hit counties",
-    "subtitle": "New confirmed cases per day, 26 April to 9 May 2020. The most recent days (shaded) are incomplete because of reporting delays.",
+    "subtitle": "New confirmed cases per day, 26 April to 9 May 2020",
     "anchor": "start",
     "fontSize": 15,
     "subtitleFontSize": 11,
@@ -372,143 +372,91 @@
       }
     ]
   },
-  "layer": [
-    {
-      "data": {
-        "values": [
-          {
-            "start": "2020-05-06",
-            "end": "2020-05-09"
-          }
-        ]
-      },
-      "mark": {
-        "type": "rect",
-        "color": "#e9e9e9"
-      },
-      "encoding": {
-        "x": {
-          "field": "start",
-          "type": "temporal"
-        },
-        "x2": {
-          "field": "end"
-        }
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "date": "2020-05-07T12:00:00",
-            "label": "Incomplete"
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "dy": -145,
-        "color": "#777777",
-        "fontSize": 10
-      },
-      "encoding": {
-        "x": {
-          "field": "date",
-          "type": "temporal"
-        },
-        "text": {
-          "field": "label"
-        }
-      }
-    },
-    {
-      "mark": {
-        "type": "line",
-        "strokeWidth": 2.2,
-        "point": {
-          "size": 28,
-          "filled": true
-        }
-      },
-      "encoding": {
-        "x": {
-          "field": "date",
-          "type": "temporal",
-          "axis": {
-            "title": null,
-            "format": "%-d %b",
-            "tickCount": {
-              "interval": "day",
-              "step": 2
-            },
-            "grid": false,
-            "labelColor": "#333333"
-          },
-          "scale": {
-            "domain": [
-              "2020-04-26",
-              "2020-05-09"
-            ]
-          }
-        },
-        "y": {
-          "field": "cases",
-          "type": "quantitative",
-          "axis": {
-            "title": "New confirmed cases",
-            "titleColor": "#333333",
-            "gridColor": "#eeeeee",
-            "domain": false,
-            "ticks": false
-          }
-        },
-        "color": {
-          "field": "county",
-          "type": "nominal",
-          "title": "County",
-          "scale": {
-            "domain": [
-              "Cobb",
-              "DeKalb",
-              "Fulton",
-              "Gwinnett",
-              "Hall"
-            ],
-            "range": [
-              "#7b3294",
-              "#008837",
-              "#e08214",
-              "#2166ac",
-              "#b2182b"
-            ]
-          },
-          "legend": {
-            "orient": "right"
-          }
-        },
-        "tooltip": [
-          {
-            "field": "county",
-            "title": "County"
-          },
-          {
-            "field": "date",
-            "type": "temporal",
-            "format": "%-d %B %Y",
-            "title": "Date"
-          },
-          {
-            "field": "cases",
-            "title": "New cases"
-          }
-        ]
-      }
-    }
-  ],
   "config": {
     "view": {
       "stroke": null
     },
     "font": "Helvetica, Arial, sans-serif"
+  },
+  "mark": {
+    "type": "line",
+    "strokeWidth": 2.2,
+    "point": {
+      "size": 28,
+      "filled": true
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "axis": {
+        "title": null,
+        "format": "%-d %b",
+        "tickCount": {
+          "interval": "day",
+          "step": 2
+        },
+        "grid": false,
+        "labelColor": "#333333"
+      },
+      "scale": {
+        "domain": [
+          "2020-04-26",
+          "2020-05-09"
+        ]
+      }
+    },
+    "y": {
+      "field": "cases",
+      "type": "quantitative",
+      "axis": {
+        "title": "New confirmed cases",
+        "titleColor": "#333333",
+        "gridColor": "#eeeeee",
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "color": {
+      "field": "county",
+      "type": "nominal",
+      "title": "County",
+      "scale": {
+        "domain": [
+          "Cobb",
+          "DeKalb",
+          "Fulton",
+          "Gwinnett",
+          "Hall"
+        ],
+        "range": [
+          "#7b3294",
+          "#008837",
+          "#e08214",
+          "#2166ac",
+          "#b2182b"
+        ]
+      },
+      "legend": {
+        "orient": "right"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "county",
+        "title": "County"
+      },
+      {
+        "field": "date",
+        "type": "temporal",
+        "format": "%-d %B %Y",
+        "title": "Date"
+      },
+      {
+        "field": "cases",
+        "title": "New cases"
+      }
+    ]
   }
 }
