@@ -93,9 +93,13 @@
 
         <section class="week" id="week5">
             <p class="week-number">Week 5</p>
-            <h2>Task title</h2>
-            <p>Describe this week’s task and what the chart shows.</p>
-            <figure id="chart5"></figure>
+            <h2>Accessing Data: API and Scrapers</h2>
+            <h3> API: UK Inflation Rate</h3>
+            <figure id="chart5_api"></figure>
+            <p>The base URL is: https://api.beta.ons.gov.uk/v1/data. This data was sourced from the UK Office of National Statistics</p>
+            <p>The elements needed to call the data are the base URL, the timeseries call, the series ID for CPI/Inflation specifically, and the data ID for this particular dataset.</p>
+            <p>The data is formatted as a JSON file. It is not tidy/cleaned as all the data is stored as text.</p>
+            
         </section>
 
         <section class="week" id="week6">
@@ -176,6 +180,10 @@
 
     let week4_spec2 = "visualizations/week4_improved.json";
     vegaEmbed('#chart4_improve', week4_spec2);
+
+    // Week 5
+    let week5_spec1 = "visualizations/week5_api.json";
+    vegaEmbed('#chart5_api', week5_spec1);
 
     // Weeks 4 to 11 work the same way, using #chart4 ... #chart11
     // Any week without a chart shows a "Chart coming soon" box.
