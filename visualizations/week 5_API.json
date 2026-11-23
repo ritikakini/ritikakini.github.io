@@ -1,0 +1,104 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": null,
+  "width": 560,
+  "height": 280,
+  "title": {
+    "text": "UK unemployment rate",
+    "subtitle": [
+      "Aged 16+, seasonally adjusted, rolling three-month average, 2016 to latest.",
+      "Live data from the ONS API (series MGSX)."
+    ]
+  },
+  "data": {
+    "url": "https://api.beta.ons.gov.uk/v1/data?uri=/employmentandlabourmarket/peoplenotinwork/unemployment/timeseries/mgsx/lms",
+    "format": {
+      "type": "json",
+      "property": "months"
+    }
+  },
+  "transform": [
+    {
+      "calculate": "toNumber(datum.year)",
+      "as": "yearNum"
+    },
+    {
+      "filter": "datum.yearNum >= 2016"
+    },
+    {
+      "calculate": "indexof(['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'], upper(substring(datum.date, 5, 8)))",
+      "as": "monthIndex"
+    },
+    {
+      "calculate": "datetime(datum.yearNum, datum.monthIndex, 1)",
+      "as": "period"
+    },
+    {
+      "calculate": "toNumber(datum.value)",
+      "as": "rate"
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "color": "#1f5f7a",
+    "strokeWidth": 2.5
+  },
+  "encoding": {
+    "x": {
+      "field": "period",
+      "type": "temporal",
+      "axis": {
+        "title": null,
+        "format": "%Y",
+        "grid": false,
+        "tickCount": "year"
+      }
+    },
+    "y": {
+      "field": "rate",
+      "type": "quantitative",
+      "scale": {
+        "zero": true
+      },
+      "axis": {
+        "title": "Unemployment rate (%)",
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "tooltip": [
+      {
+        "field": "date",
+        "title": "Period ending"
+      },
+      {
+        "field": "rate",
+        "title": "Unemployment rate (%)",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif",
+    "axis": {
+      "labelColor": "#5b6573",
+      "titleColor": "#5b6573",
+      "domainColor": "#c9bfa9",
+      "tickColor": "#c9bfa9",
+      "gridColor": "#e6dcc8",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal"
+    },
+    "title": {
+      "color": "#1b2430",
+      "subtitleColor": "#5b6573",
+      "anchor": "start",
+      "fontSize": 16,
+      "subtitleFontSize": 12
+    }
+  }
+}
