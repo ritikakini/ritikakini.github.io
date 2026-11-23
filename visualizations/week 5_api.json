@@ -1,0 +1,160 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "background": null,
+  "width": 560,
+  "height": 280,
+  "title": {
+    "text": "UK inflation rate",
+    "subtitle": [
+      "Consumer Prices Index (CPI), annual rate, 2016 to latest.",
+      "Live data from the ONS API (series D7G7)."
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "font": "IBM Plex Sans, Segoe UI, Helvetica, Arial, sans-serif",
+    "axis": {
+      "labelColor": "#5b6573",
+      "titleColor": "#5b6573",
+      "domainColor": "#c9bfa9",
+      "tickColor": "#c9bfa9",
+      "gridColor": "#e6dcc8",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": "normal"
+    },
+    "title": {
+      "color": "#1b2430",
+      "subtitleColor": "#5b6573",
+      "anchor": "start",
+      "fontSize": 16,
+      "subtitleFontSize": 12
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "color": "#1f5f7a",
+        "strokeWidth": 2.5
+      },
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "temporal",
+          "axis": {
+            "title": null,
+            "format": "%Y",
+            "grid": false,
+            "tickCount": "year"
+          }
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "scale": {
+            "zero": true
+          },
+          "axis": {
+            "title": "Annual inflation rate (%)",
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "tooltip": [
+          {
+            "field": "date",
+            "title": "Month"
+          },
+          {
+            "field": "rate",
+            "title": "Inflation rate (%)",
+            "format": ".1f"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "toNumber(datum.year)",
+          "as": "yearNum"
+        },
+        {
+          "filter": "datum.yearNum >= 2016"
+        },
+        {
+          "calculate": "indexof(['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'], upper(substring(datum.date, 5, 8)))",
+          "as": "monthIndex"
+        },
+        {
+          "calculate": "datetime(datum.yearNum, datum.monthIndex, 1)",
+          "as": "period"
+        },
+        {
+          "calculate": "toNumber(datum.value)",
+          "as": "rate"
+        }
+      ],
+      "data": {
+        "url": "https://api.beta.ons.gov.uk/v1/data?uri=/economy/inflationandpriceindices/timeseries/d7g7/mm23",
+        "format": {
+          "type": "json",
+          "property": "months"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "y": 2
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "color": "#b5652e"
+      },
+      "encoding": {
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "y": 2,
+            "t": "2% target"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dy": -7,
+        "color": "#b5652e",
+        "fontSize": 11,
+        "x": {
+          "expr": "width"
+        }
+      },
+      "encoding": {
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "t"
+        }
+      }
+    }
+  ]
+}
